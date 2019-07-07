@@ -14,20 +14,8 @@
         <li class="nav-item"><a class="nav-link" href="/usuario">Voltar</a></li>
     </ul>
 
-
-
-        <form th:action="@{salvar}" th:object="${usuario}" method="POST">
-            <input type="text" th:field="*{id}"/>
-            <label>Nome: <input type="text" th:field="*{nomeCompleto}" /></label>
-            <label>Senha: <input type="text" th:field="*{codigo}" /></label>
-            <label>Descrição textual: <input type="text" th:field="*{descricao}" /></label>
-            <label>Email: <input type="text"  th:field="*{email}" /></label>
-            <input type="submit"  />
-            <input type="reset"  />
-        </form>
-
-    <form th:action="@{salvar}" th:object="${usuario}" method="POST">
-    <input type="text" th:field="*{id}" />
+    <form th:action="@{./salvar}" th:object="${usuario}" method="POST">
+    <input type="text" th:field="*{id}" class="d-none" />
     
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nome:</label> 
