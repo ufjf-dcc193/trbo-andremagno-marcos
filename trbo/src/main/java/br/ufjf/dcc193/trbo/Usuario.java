@@ -22,8 +22,8 @@ public class Usuario {
 
     }
 
-    public Usuario(String nomeCompleto, String setor, String codigoVinculo, String telefone, String celular,
-            String email) {
+    public Usuario(String nomeCompleto, String setor, String codigoVinculo, String telefone, String celular, String email) {
+        
         this.nomeCompleto = nomeCompleto;
         this.setor = setor;
         this.codigoVinculo = codigoVinculo;
