@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Atividade: Nova</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <header th:include="cabecalho :: header"></header>
+
+    <ul class="nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link" href="/">Página inicial</a></li>
+        <li class="nav-item"><a class="nav-link" href="categoria/cadastrar">Nova Categoria</a></li>
+    </ul>
+    <h1>Lista de Categorias</h1>
+    <table class="table table-hover">
+    <caption>Lista de Categorias cadastradas</caption>
+    
+        <thead>
+            <tr> <th>id</th> <th>Título</th> <th>Descrição</th> <th></th> <th></th> </tr>
+        </thead>
+        <tbody>
+            <tr th:each="categoria: ${categorias}">
+                
+                <td th:text=${categoria.id}></td>
+                <td th:text=${categoria.titulo}></td>
+                <td th:text=${categoria.descricao}></td>
+                <td><a th:href="@{'categoria/editar/' + ${categoria.id}}" role="button">Editar</a></td>
+                <td><a th:href="@{'categoria/deletar/' + ${categoria.id}}" role="button">Deletar</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
