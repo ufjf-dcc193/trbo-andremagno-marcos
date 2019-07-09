@@ -18,7 +18,7 @@
     <caption>Atendimentos existentes</caption>
     
         <thead>
-            <tr> <th>id</th> <th>Atendente</th> <th>Categoria</th> <th>Descrição</th> <th>Usuario</th> <th></th> <th></th> </tr>
+            <tr> <th>id</th> <th>Atendente</th> <th>Categoria</th> <th>Descrição</th> <th>Usuario</th> <th>Abertura</th> <th>Status</th> <th></th> <th></th> </tr>
         </thead>
         <tbody>
             <tr th:each="atendimento: ${atendimentos}">
@@ -28,6 +28,8 @@
                 <td th:text=${atendimento.categoria.titulo}></td>
                 <td th:text=${atendimento.descricao}></td>
                 <td th:text=${atendimento.usuario.nomeCompleto}></td>
+                <td th:text=${atendimento.dataCriacao}></td>
+                <td th:text=${atendimento.status}></td>
 
                 <td><a th:href="@{'atendimento/alterar/' + ${atendimento.id}}" role="button">Alterar</a></td>
                 <td><a th:href="@{'atendimento/fechar/' + ${atendimento.id}}" role="button">Fechar</a></td>

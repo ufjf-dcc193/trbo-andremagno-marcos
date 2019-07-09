@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.trbo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,10 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimento/salvar")
     public String salvarTrabalho(Atendimento atendimento){
+
+        atendimento.setStatus("revisao");
+        atendimento.setDataCriacao(new Date());
+
         repositorioAtendimento.save(atendimento);
         return "redirect:/atendimento";
     }
