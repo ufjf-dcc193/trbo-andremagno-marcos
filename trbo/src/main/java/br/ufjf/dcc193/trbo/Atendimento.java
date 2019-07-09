@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,14 +19,16 @@ public class Atendimento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @OneToOne
+    
+    @OneToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataFechamento;
     private String descricao;
-    @OneToOne
+
+    @OneToOne(fetch = FetchType.EAGER)
     private Atendente atendente;
     @OneToOne(optional = true)
     private Usuario usuario;
