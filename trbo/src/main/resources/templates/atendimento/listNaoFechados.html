@@ -2,10 +2,37 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
    <meta charset="UTF-8">
-   <title>Atendentes não fechados</title>
+   <title>Atividade: Nova</title>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h1> Lista de atendentes não fechados </h1>
+    
+    <header th:include="cabecalho :: header"></header>
+
+    <ul class="nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link" href="/">Página inicial</a></li>
+        <li class="nav-item"><a class="nav-link" href="atendimento/novo">Novo Atendimento</a></li>
+    </ul>
+    <h1>Atendimentos</h1>
+    <table class="table table-hover">
+    <caption>Atendimentos existentes</caption>
+        <thead>
+            <tr> <th>id</th> <th>Atendente</th> <th>Categoria</th> <th>Descrição</th> <th>Usuario</th> <th></th> <th></th> </tr>
+        </thead>
+        <tbody>
+            <tr th:each="atendimento: ${atendimentos}">
+                
+                <td th:text=${atendimento.id}></td>
+                <td th:text=${atendimento.atendente.nomeCompleto}></td>
+                <td th:text=${atendimento.categoria.titulo}></td>
+                <td th:text=${atendimento.descricao}></td>
+                <td th:text=${atendimento.usuario.nomeCompleto}></td>
+
+                <td><a th:href="@{'atendimento/alterar/' + ${atendimento.id}}" role="button">Alterar</a></td>
+                <td><a th:href="@{'atendimento/fechar/' + ${atendimento.id}}" role="button">Fechar</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
 </body>
 </html>

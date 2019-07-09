@@ -1,5 +1,8 @@
 package br.ufjf.dcc193.trbo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +51,7 @@ public class ControllerAtendimento {
         model.addAttribute("usuarios", repositorioUsuario.findAll());
         return "atendimento/alterar";
     }
-
+    
     @RequestMapping("/atendimento/alterar/salvar")
     public String alterarSalvarAtendimento(Atendimento atendimento){
         repositorioAtendimento.save(atendimento);
@@ -60,4 +63,20 @@ public class ControllerAtendimento {
         repositorioAtendimento.save(atendimento);
         return "redirect:/atendimento";
     }
+
+    @RequestMapping("/atendimentoNaoFechados")
+    public String listanaoFechados(Model model){
+
+        List<Atendimento> listAten= repositorioAtendimento.findAll();
+        List<Atendimento> listAtenFechado= new ArrayList<>();
+        for(int i=0;i<=listAten.size();i++){
+            if(listAten.get(i).getStatus()=="fechado"){
+                listAtenFechado.add(listAten.get(i));
+            }
+        }
+
+        model.addAttribute("atendimentos", listAtenFechado);
+        return "atendimento/listNaoFechados";
+    }
+
 }
