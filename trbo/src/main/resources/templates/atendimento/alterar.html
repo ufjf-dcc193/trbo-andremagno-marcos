@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Atividade: Nova</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <header th:include="cabecalho :: header"></header>
+    
+    <ul class="nav nav-pills mb-3">
+        <li class="nav-item"><a class="nav-link" href="/">Página Inicial</a></li>
+        <li class="nav-item"><a class="nav-link" href="/atendimento">Voltar</a></li>
+    </ul>
+
+    <form th:action="@{./salvar}" th:object="${atendimento}" method="POST">
+    <input type="text" th:field="*{id}" class="d-none" />
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Atendente responsável:</label> 
+                <div th:each="atendente: ${atendentes}" th:object=${Atendente}>
+                            <input type="radio" th:value="${atendente.id}" th:attr="checked=${atendimento.atendente.id == atendente.id ? true :false} " name="atendente">
+                            <label for="defaultCheck1" th:text="${atendente.nomeCompleto}"></label>
+                </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="reset" class="btn btn-primary">Limpar</button>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>
+
