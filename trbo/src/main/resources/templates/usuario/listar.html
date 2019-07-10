@@ -30,8 +30,9 @@
                 <td th:text=${user.telefone}></td>
                 <td th:text=${user.celular}></td>
                 <td th:text=${user.email}></td>
-                <td><a th:href="@{'usuario/editar/' + ${user.id}}" role="button">Editar</a></td>
-                <td><a th:href="@{'usuario/deletar/' + ${user.id}}" role="button">Deletar</a></td>
+                <td><a th:href="@{'/usuario/editar/' + ${user.id}}" role="button">Editar</a></td>
+                <td><a th:href="@{'/usuario/deletar/' + ${user.id}}" role="button">Deletar</a></td>
+                <td><a th:href="@{'/atendimentoPorUsuario/' + ${user.id}}" role="button">Atendimentos</a></td>
             </tr>
         </tbody>
     </table>
