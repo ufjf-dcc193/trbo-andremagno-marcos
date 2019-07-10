@@ -15,7 +15,6 @@ public class ControllerCategoria {
 
     @RequestMapping("categoria")
     public String listarCategoria(Model model){
-        repositorioCategoria.save(new Categoria("categoria",""));
         model.addAttribute("categorias", repositorioCategoria.findAll());
         return "categoria/listar";
     }
