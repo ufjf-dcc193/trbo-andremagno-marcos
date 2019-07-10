@@ -29,6 +29,7 @@ public class Evento {
     }
 
     public Evento(Atendimento atendimento, Date data, String tipo, String descricao) {
+        
         this.atendimento = atendimento;
         this.data = data;
         this.tipo = tipo;

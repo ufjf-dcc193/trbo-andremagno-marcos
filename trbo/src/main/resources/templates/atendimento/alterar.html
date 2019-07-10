@@ -37,6 +37,13 @@
         </div>
 
         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descrição:</label>
+                <div class="form-group mx-sm-1 mb-2">
+                    <input class="form-control" placeholder="Digite uma descrição" type="text" th:field="*{descricao}" />
+                </div>
+        </div>
+
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Usuário:</label> 
                 <div th:each="usuario: ${usuarios}" th:object=${Usuario}>
                             <input type="radio" th:value="${usuario.id}" th:attr="checked=${atendimento.usuario.id == usuario.id ? true :false} " name="usuario">

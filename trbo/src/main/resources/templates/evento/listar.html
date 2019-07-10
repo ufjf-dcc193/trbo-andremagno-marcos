@@ -22,20 +22,7 @@
         </thead>
         <tbody>
 
-            <!--<tr th:each="atendimento:${atendimentos}" th:object=${atendimento}>
-                    <td th:text=*{id}></td>
-                    <td th:text=*{atendente.getNomeCompleto()}></td>
-                    <td th:text=*{categoria.getTitulo()}></td>
-                    <td th:text=*{descricao}></td>
-                    <div th:if=*{usuario==null}>
-                        <td>Usuario não informado</td>
-                    </div>
-                    <div th:unless=*{usuario==null}>
-                        <td th:text=*{usuario.getNomeCompleto()}></td>
-                    </div>
-                    <td th:text=*{dataCriacao}></td>
-                    <td th:text=${status}></td>-->
-                    
+               
                     
                     
                    
@@ -43,8 +30,9 @@
             <tr th:each="evento: ${eventos}">
                 
                 <td th:text=${evento.id}></td>
-                <td th:text=${evento.tipo}></td>
                 <td th:text=${evento.descricao}></td>
+                <td th:text=${evento.tipo}></td>
+                
                 
             </tr>
         </tbody>
