@@ -29,7 +29,7 @@
     <table class="table table-hover">
     <caption>Lista de Eventos </caption>
         <thead>
-            <tr> <th>id</th> <th>descricao</th> <th>tipo</th>  <th></th> <th></th>  </tr>
+            <tr> <th>id</th> <th>descricao</th> <th>tipo</th> <th>data e hora</th>  <th></th> <th></th>  </tr>
         </thead>
         <tbody>
             <tr th:each="evento: ${eventos}">
@@ -37,6 +37,7 @@
                 <td th:text=${evento.id}></td>
                 <td th:text=${evento.descricao}></td>
                 <td th:text=${evento.tipo}></td>
+                <td th:text=${evento.data}></td>
 
                 <td><a th:href="@{'/atendimento/evento/editar/' + ${evento.id}}" role="button">Editar</a></td>
                 <td><a th:href="@{'/evento/deletar/' + ${evento.id}}" role="button">Deletar</a></td>
