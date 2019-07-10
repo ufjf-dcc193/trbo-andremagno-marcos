@@ -32,11 +32,11 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimento/novo")
     public String novoAtendimento(Model model){
-        repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
+        /*repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
 
 		repositorioUsuario.save(new Usuario("Andre","","","","",""));
 		
-		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));
+		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));*/
         model.addAttribute("atendimento", new Atendimento());
         model.addAttribute("atendentes", repositorioAtendente.findAll());
         model.addAttribute("categorias", repositorioCategoria.findAll());
