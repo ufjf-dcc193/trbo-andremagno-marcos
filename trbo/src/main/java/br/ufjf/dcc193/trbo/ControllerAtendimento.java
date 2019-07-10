@@ -22,6 +22,8 @@ public class ControllerAtendimento {
     RepositorioAtendente repositorioAtendente;
     @Autowired
     RepositorioUsuario repositorioUsuario;
+    @Autowired
+    RepositorioEvento repositorioEvento;
 
     @RequestMapping("/atendimento")
     public String gestaoAtendimento(Model model){
@@ -66,6 +68,11 @@ public class ControllerAtendimento {
         atendimento.setDataCriacao(new Date());
 
         repositorioAtendimento.save(atendimento);
+
+        Evento eventoAbertura = new Evento(atendimento, atendimento.getDataCriacao(), "abertura", "descricao");
+        repositorioEvento.save(eventoAbertura);
+
+
         return "redirect:/atendimento";
     }
 
