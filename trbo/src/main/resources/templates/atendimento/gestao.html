@@ -21,6 +21,25 @@
             <tr> <th>id</th> <th>Atendente</th> <th>Categoria</th> <th>Descrição</th> <th>Usuario</th> <th>Abertura</th> <th>Status</th> <th></th> <th></th> </tr>
         </thead>
         <tbody>
+
+            <!--<tr th:each="atendimento:${atendimentos}" th:object=${atendimento}>
+                    <td th:text=*{id}></td>
+                    <td th:text=*{atendente.getNomeCompleto()}></td>
+                    <td th:text=*{categoria.getTitulo()}></td>
+                    <td th:text=*{descricao}></td>
+                    <div th:if=*{usuario==null}>
+                        <td>Usuario não informado</td>
+                    </div>
+                    <div th:unless=*{usuario==null}>
+                        <td th:text=*{usuario.getNomeCompleto()}></td>
+                    </div>
+                    <td th:text=*{dataCriacao}></td>
+                    <td th:text=${status}></td>-->
+                    
+                    
+                    
+                   
+
             <tr th:each="atendimento: ${atendimentos}">
                 
                 <td th:text=${atendimento.id}></td>

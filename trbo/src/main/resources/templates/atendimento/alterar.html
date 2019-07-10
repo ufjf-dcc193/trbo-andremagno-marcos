@@ -16,12 +16,39 @@
 
     <form th:action="@{./salvar}" th:object="${atendimento}" method="POST">
     <input type="text" th:field="*{id}" class="d-none" />
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Status do atendimento:</label>
+            <select id="status" name="status">
+                <option value="revisao" selected="selected">em revisao</option>            
+                <option value="aberto">aberto</option>
+                <option value="bloqueado">bloqueado</option>
+                <option value="andamento">em andamento</option>            
+                <option value="fechado">fechado</option>
+            </select>
+        </div>
     
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Atendente responsável:</label> 
                 <div th:each="atendente: ${atendentes}" th:object=${Atendente}>
                             <input type="radio" th:value="${atendente.id}" th:attr="checked=${atendimento.atendente.id == atendente.id ? true :false} " name="atendente">
                             <label for="defaultCheck1" th:text="${atendente.nomeCompleto}"></label>
+                </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Usuário:</label> 
+                <div th:each="usuario: ${usuarios}" th:object=${Usuario}>
+                            <input type="radio" th:value="${usuario.id}" th:attr="checked=${atendimento.usuario.id == usuario.id ? true :false} " name="usuario">
+                            <label for="defaultCheck1" th:text="${usuario.nomeCompleto}"></label>
+                </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Categoria:</label> 
+                <div th:each="categoria: ${categorias}" th:object=${Categoria}>
+                            <input type="radio" th:value="${categoria.id}" th:attr="checked=${atendimento.categoria.id == categoria.id ? true :false} " name="categoria">
+                            <label for="defaultCheck1" th:text="${categoria.titulo}"></label>
                 </div>
         </div>
 
