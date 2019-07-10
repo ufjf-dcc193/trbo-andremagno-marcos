@@ -15,7 +15,9 @@ public class ControllerUsuario {
 
     @RequestMapping("usuario")
     public String listarUsuario(Model model){
+        repositorioUsuario.save(new Usuario("aaaa","","","","",""));
         model.addAttribute("usuarios", repositorioUsuario.findAll());
+
         return "usuario/listar";
     }
 

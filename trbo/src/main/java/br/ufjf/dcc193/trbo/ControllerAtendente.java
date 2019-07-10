@@ -15,6 +15,7 @@ public class ControllerAtendente {
 
     @RequestMapping("atendente")
     public String listarAtendente(Model model){
+        repositorioAtendente.save(new Atendente("dddd","","","",""));
         model.addAttribute("atendentes", repositorioAtendente.findAll());
         return "atendente/listar";
     }

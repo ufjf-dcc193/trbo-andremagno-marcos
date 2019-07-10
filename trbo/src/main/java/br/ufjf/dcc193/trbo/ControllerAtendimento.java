@@ -33,6 +33,11 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimento/novo")
     public String novoAtendimento(Model model){
+        repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
+
+		repositorioUsuario.save(new Usuario("Andre","","","","",""));
+		
+		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));
         model.addAttribute("atendimento", new Atendimento());
         model.addAttribute("atendentes", repositorioAtendente.findAll());
         model.addAttribute("categorias", repositorioCategoria.findAll());
@@ -42,6 +47,8 @@ public class ControllerAtendimento {
     
     @RequestMapping("/atendimento/fechar/{id}")
     public String fecharAtendimento(@PathVariable Long id, Model model){
+       
+
         repositorioAtendimento.deleteById(id);
         return "redirect:/atendimento";
     }
@@ -78,16 +85,8 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimentoNaoFechados")
     public String listanaoFechados(Model model){
-
-        List<Atendimento> listAten= repositorioAtendimento.findAll();
-        List<Atendimento> listAtenFechado= new ArrayList<>();
-        for(int i=0;i<=listAten.size();i++){
-            if(listAten.get(i).getStatus()=="fechado"){
-                listAtenFechado.add(listAten.get(i));
-            }
-        }
-
-        model.addAttribute("atendimentos", listAtenFechado);
+        List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByAtemdemteAndStatus();
+        model.addAttribute("atendimentos", listAten);
         return "atendimento/listNaoFechados";
     }
 

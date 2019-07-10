@@ -18,8 +18,28 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 		System.out.println("Rodando!");
+/*
+		RepositorioUsuario repositorioUsuario;
+		
+		RepositorioAtendente repositorioAtendente;
+		
+		RepositorioCategoria repositorioCategoria;
 
-		/*RepositorioUsuario repositorioUsuario;
+		ConfigurableApplicationContext entrada;
+
+		entrada = SpringApplication.run(DemoApplication.class, args);
+
+		repositorioUsuario = entrada.getBean(RepositorioUsuario.class);
+		repositorioAtendente = entrada.getBean(RepositorioAtendente.class);
+		repositorioCategoria = entrada.getBean(RepositorioCategoria.class);
+		
+		repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
+
+		repositorioUsuario.save(new Usuario("Andre","","","","",""));
+		
+		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));
+
+		RepositorioUsuario repositorioUsuario;
 		
 		RepositorioAtendente repositorioAtendente;
 		
