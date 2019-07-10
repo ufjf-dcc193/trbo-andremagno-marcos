@@ -70,7 +70,12 @@ public class ControllerAtendimento {
     
     @RequestMapping("/atendimento/alterar/salvar")
     public String alterarSalvarAtendimento(Atendimento atendimento){
+
         
+        
+        if(atendimento.getStatus().equals("fechado")){
+            atendimento.setDataFechamento(new Date());
+        }
         atendimento.setDataCriacao(repositorioAtendimento.findById(atendimento.getId()).get().getDataCriacao());
         repositorioAtendimento.save(atendimento);
         
