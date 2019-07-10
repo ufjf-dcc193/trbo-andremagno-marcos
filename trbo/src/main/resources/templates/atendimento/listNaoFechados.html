@@ -53,8 +53,8 @@
                 <td th:text=${atendimento.dataCriacao}></td>
                 <td th:text=${atendimento.status}></td>
 
-                <td><a th:href="@{'atendimento/alterar/' + ${atendimento.id}}" role="button">Alterar</a></td>
-                <td><a th:href="@{'atendimento/fechar/' + ${atendimento.id}}" role="button">Fechar</a></td>
+                <td><a th:href="@{'/atendimento/alterar/' + ${atendimento.id}}" role="button">Alterar</a></td>
+                <td><a th:href="@{'/atendimento/fechar/' + ${atendimento.id}}" role="button">Fechar</a></td>
             </tr>
         </tbody>
     </table>

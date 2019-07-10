@@ -31,6 +31,7 @@
                 <td th:text=${atentende.email}></td>
                 <td><a th:href="@{'atendente/editar/' + ${atentende.id}}" role="button">Editar</a></td>
                 <td><a th:href="@{'atendente/deletar/' + ${atentende.id}}" role="button">Deletar</a></td>
+                <td><a th:href="@{'atendimentoNaoFechadosAtendente/' + ${atentende.id}}" role="button">Listar Atendimento não Fechados</a></td>
             </tr>
         </tbody>
     </table>

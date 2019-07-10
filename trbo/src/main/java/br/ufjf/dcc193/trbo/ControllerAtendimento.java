@@ -84,7 +84,13 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimentoNaoFechados")
     public String listanaoFechados(Model model){
-        List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByAtemdemteAndStatus();
+        List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByStatus();
+        model.addAttribute("atendimentos", listAten);
+        return "atendimento/listNaoFechados";
+    }
+    @RequestMapping("/atendimentoNaoFechadosAtendente/{id}")
+    public String listanaoFechados(@PathVariable Long id, Model model){
+        List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByAtemdemteAndStatus(repositorioAtendente.findById(id).get());
         model.addAttribute("atendimentos", listAten);
         return "atendimento/listNaoFechados";
     }
