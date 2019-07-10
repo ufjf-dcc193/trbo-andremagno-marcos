@@ -32,11 +32,11 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimento/novo")
     public String novoAtendimento(Model model){
-        /*repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
+        repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
 
 		repositorioUsuario.save(new Usuario("Andre","","","","",""));
 		
-		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));*/
+		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));
         model.addAttribute("atendimento", new Atendimento());
         model.addAttribute("atendentes", repositorioAtendente.findAll());
         model.addAttribute("categorias", repositorioCategoria.findAll());
@@ -64,20 +64,20 @@ public class ControllerAtendimento {
     @RequestMapping("/atendimento/detalhes/{id}")
     public String detalhesAtendimento(@PathVariable Long id, Model model){
         model.addAttribute("atendimento", repositorioAtendimento.findById(id).get());
-        model.addAttribute("atendentes", repositorioAtendente.findAll());
-        model.addAttribute("categorias", repositorioCategoria.findAll());
-        model.addAttribute("usuarios", repositorioUsuario.findAll());
-        model.addAttribute("eventos", repositorioEvento.findAll());
+        model.addAttribute("eventos", repositorioEvento.getEventosByAtendimento(repositorioAtendimento.findById(id).get()));
         return "atendimento/detalhes";
     }
     
     @RequestMapping("/atendimento/alterar/salvar")
     public String alterarSalvarAtendimento(Atendimento atendimento){
-  
+        
+        atendimento.setDataCriacao(repositorioAtendimento.findById(atendimento.getId()).get().getDataCriacao());
         repositorioAtendimento.save(atendimento);
         
 
         Evento eventoAlteracao = new Evento(atendimento, atendimento.getDataCriacao(), "alteracao", atendimento.getDescricao());
+        
+        
         repositorioEvento.save(eventoAlteracao);
 
         return "redirect:/atendimento";
@@ -92,6 +92,9 @@ public class ControllerAtendimento {
         repositorioAtendimento.save(atendimento);
 
         Evento eventoAbertura = new Evento(atendimento, atendimento.getDataCriacao(), "abertura", atendimento.getDescricao());
+        
+        
+        
         repositorioEvento.save(eventoAbertura);
 
 
