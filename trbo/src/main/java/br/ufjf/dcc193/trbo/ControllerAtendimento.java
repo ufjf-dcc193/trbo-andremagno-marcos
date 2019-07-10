@@ -32,11 +32,7 @@ public class ControllerAtendimento {
 
     @RequestMapping("/atendimento/novo")
     public String novoAtendimento(Model model){
-        /*repositorioAtendente.save(new Atendente("Marcos","asdfa","","","asdf@adsf"));
-
-		repositorioUsuario.save(new Usuario("Andre","","","","",""));
-		
-		repositorioCategoria.save(new Categoria("TTTTTTTtt",""));*/
+        
         model.addAttribute("atendimento", new Atendimento());
         model.addAttribute("atendentes", repositorioAtendente.findAll());
         model.addAttribute("categorias", repositorioCategoria.findAll());
@@ -79,10 +75,9 @@ public class ControllerAtendimento {
         atendimento.setDataCriacao(repositorioAtendimento.findById(atendimento.getId()).get().getDataCriacao());
         repositorioAtendimento.save(atendimento);
         
-
-        Evento eventoAlteracao = new Evento(atendimento, atendimento.getDataCriacao(), "alteracao", atendimento.getDescricao());
-        
-        
+        Date horaEvento = new Date();
+        Evento eventoAlteracao = new Evento(atendimento, horaEvento, atendimento.getStatus(), atendimento.getDescricao());
+                
         repositorioEvento.save(eventoAlteracao);
 
         return "redirect:/atendimento";
