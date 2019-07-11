@@ -40,10 +40,8 @@ public class ControllerAtendimento {
         return "atendimento/novo";
     }
     
-    @RequestMapping("/atendimento/fechar/{id}")
-    public String fecharAtendimento(@PathVariable Long id, Model model){
-       
-
+    @RequestMapping("atendimento/deletar/{id}")
+    public String deletarAtendimento(@PathVariable Long id, Model model){
         repositorioAtendimento.deleteById(id);
         return "redirect:/atendimento";
     }

@@ -3,6 +3,7 @@ package br.ufjf.dcc193.trbo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class Atendimento {
     @OneToOne(optional = true)
     private Usuario usuario;
     private String status;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atendimento", cascade = CascadeType.ALL)
     private List<Evento> eventos;
 
     public Atendimento() {
