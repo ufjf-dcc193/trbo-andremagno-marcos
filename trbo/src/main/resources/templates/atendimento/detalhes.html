@@ -39,8 +39,6 @@
                 <td th:text=${evento.tipo}></td>
                 <td th:text=${evento.data}></td>
 
-                <td><a th:href="@{'/atendimento/evento/editar/' + ${evento.id}}" role="button">Editar</a></td>
-                <td><a th:href="@{'/evento/deletar/' + ${evento.id}}" role="button">Deletar</a></td>
             </tr>
         </tbody>
     </table>

@@ -73,12 +73,24 @@ public class ControllerAtendimento {
             atendimento.setDataFechamento(new Date());
         }
         atendimento.setDataCriacao(repositorioAtendimento.findById(atendimento.getId()).get().getDataCriacao());
-        repositorioAtendimento.save(atendimento);
+        //repositorioAtendimento.save(atendimento);
+
+        String alteraDescricao = "";
+        if( atendimento.getStatus() != repositorioAtendimento.findById(atendimento.getId()).get().getStatus() ) {
+            alteraDescricao = alteraDescricao+" : status alterado para "+atendimento.getStatus();
+        }
+        if(!atendimento.getUsuario().equals(repositorioAtendimento.findById(atendimento.getId()).get().getUsuario())){
+            alteraDescricao = alteraDescricao+" : usuario alterado para "+atendimento.getUsuario().getNomeCompleto();
+        }
+        if(!atendimento.getAtendente().equals(repositorioAtendimento.findById(atendimento.getId()).get().getAtendente())){
+            alteraDescricao = alteraDescricao+" : atendente alterado para "+atendimento.getAtendente().getNomeCompleto();
+        }
         
         Date horaEvento = new Date();
-        Evento eventoAlteracao = new Evento(atendimento, horaEvento, atendimento.getStatus(), atendimento.getDescricao());
+        Evento eventoAlteracao = new Evento(atendimento, horaEvento, atendimento.getStatus(), atendimento.getDescricao()+alteraDescricao);
                 
         repositorioEvento.save(eventoAlteracao);
+        repositorioAtendimento.save(atendimento);
 
         return "redirect:/atendimento";
     }
