@@ -113,6 +113,8 @@ public class ControllerAtendimento {
         model.addAttribute("aten", repositorioAtendente.findById(id).get());
         List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByAtemdemteAndStatus(repositorioAtendente.findById(id).get());
         model.addAttribute("atendimentos", listAten);
+        model.addAttribute("quantAtendimentos", listAten.size());
+    
         return "atendimento/listNaoFechadosPorAtendente";
     }
     @RequestMapping("/atendimentoPorUsuario/{id}")
@@ -120,6 +122,7 @@ public class ControllerAtendimento {
         model.addAttribute("user", repositorioUsuario.findById(id).get());
         List<Atendimento> listAten= repositorioAtendimento.getAtendimentoByUsuario(repositorioUsuario.findById(id).get());
         model.addAttribute("atendimentos", listAten);
+        model.addAttribute("quantAtendimentos", listAten.size());
         return "atendimento/listPorUsuario";
     }
 
