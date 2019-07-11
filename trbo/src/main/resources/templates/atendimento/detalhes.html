@@ -14,10 +14,9 @@
         <li class="nav-item"><a class="nav-link" href="/atendimento">Voltar</a></li>
     </ul>
 
-        
         <h3> Atendimento Selecionado: <span th:text="${atendimento.descricao}"></span></h3>
-        
-        <label>Atendente responsável: <span th:text="${atendimento.atendente.nomeCompleto}"></span></label><br>
+        <label>Atendente Inicial: <span th:text="${atendimento.atendenteInicial.nomeCompleto}"></span></label><br>
+        <label>Atendente responsável Atual: <span th:text="${atendimento.atendente.nomeCompleto}"></span></label><br>
         <label>Categoria: <span th:text="${atendimento.categoria.titulo}"></span></label><br>
         <label>Criado em: <span th:text="${atendimento.dataCriacao}"></span></label><br>
         <label>Fechado em: <span th:text="${atendimento.dataFechamento}"></span></label><br>

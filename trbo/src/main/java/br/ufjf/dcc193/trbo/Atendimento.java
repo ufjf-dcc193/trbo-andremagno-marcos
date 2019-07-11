@@ -31,6 +31,8 @@ public class Atendimento {
 
     @OneToOne(fetch = FetchType.EAGER)
     private Atendente atendente;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Atendente atendenteInicial;
     @OneToOne(optional = true)
     private Usuario usuario;
     private String status;
@@ -41,7 +43,7 @@ public class Atendimento {
 
     }
 
-    public Atendimento(Categoria categoria, Date dataCriacao, Date dataFechamento, String descricao,
+    public Atendimento(Atendente atendenteInicial, Categoria categoria, Date dataCriacao, Date dataFechamento, String descricao,
             Atendente atendente, Usuario usuario, String status, List<Evento> eventos) {
         this.categoria = categoria;
         this.dataCriacao = dataCriacao;
@@ -51,6 +53,7 @@ public class Atendimento {
         this.usuario = usuario;
         this.status = status;
         this.eventos = eventos;
+        this.atendenteInicial=atendenteInicial;
     }
 
     public Long getId() {
@@ -69,6 +72,16 @@ public class Atendimento {
         this.categoria = categoria;
     }
 
+ 
+   
+    
+   public void setAtendenteInicial(Atendente atendenteInicial) {
+       this.atendenteInicial = atendenteInicial;
+   }
+
+   public Atendente getAtendenteInicial() {
+       return atendenteInicial;
+   }
     public Date getDataCriacao() {
         return dataCriacao;
     }
