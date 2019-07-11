@@ -65,7 +65,7 @@ public class ControllerAtendimento {
     @RequestMapping("/atendimento/alterar/salvar")
     public String alterarSalvarAtendimento(Atendimento atendimento){
 
-        
+
         
         if(atendimento.getStatus().equals("fechado")){
             atendimento.setDataFechamento(new Date());
@@ -83,10 +83,13 @@ public class ControllerAtendimento {
         if(!atendimento.getAtendente().equals(repositorioAtendimento.findById(atendimento.getId()).get().getAtendente())){
             alteraDescricao = alteraDescricao+" : atendente alterado para "+atendimento.getAtendente().getNomeCompleto();
         }
+
+        
         
         Date horaEvento = new Date();
         Evento eventoAlteracao = new Evento(atendimento, horaEvento, atendimento.getStatus(), atendimento.getDescricao()+alteraDescricao);
                 
+
         repositorioEvento.save(eventoAlteracao);
         repositorioAtendimento.save(atendimento);
 
@@ -94,7 +97,21 @@ public class ControllerAtendimento {
     }
 
     @RequestMapping("/atendimento/salvar")
-    public String salvarTrabalho(Atendimento atendimento){
+    public String salvarTrabalho(Atendimento atendimento, Model model){
+
+        
+        if( (atendimento.getAtendente()==null) || (atendimento.getUsuario()==null) || (atendimento.getCategoria()==null)){
+            
+            model.addAttribute("erro", "Preencha todos os campos");
+
+            model.addAttribute("atendimento", new Atendimento());
+            model.addAttribute("atendentes", repositorioAtendente.findAll());
+            model.addAttribute("categorias", repositorioCategoria.findAll());
+            model.addAttribute("usuarios", repositorioUsuario.findAll());
+            
+            return "atendimento/novo";
+            
+        }
 
         atendimento.setStatus("revisao");
         atendimento.setDataCriacao(new Date());

@@ -45,6 +45,7 @@ public class ControllerAtendente {
 
     @RequestMapping("atendente/salvar")
     public String salvarTrabalho(Atendente atendente){
+  
         repositorioAtendente.save(atendente);
         return "redirect:/atendente";
     }

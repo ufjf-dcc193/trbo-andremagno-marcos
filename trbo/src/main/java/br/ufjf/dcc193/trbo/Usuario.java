@@ -11,6 +11,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    
     private String nomeCompleto;
     private String setor;
     private String codigoVinculo;
